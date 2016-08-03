@@ -37,16 +37,31 @@ hr {
     border-width: 3px;
 }
 
-
-.btn-primary{
+/*BTN*/
+.btn-primary, .btn-primary:visited{
     background-color: #F37934;
     border-color: #F37934;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+{
+    background-color: #F37934;
+    border-color: #F37934;
+    opacity:0.3;
 }
 
 .btn-info{
     background-color: #272425;
     border-color: #272425;
     
+}
+
+
+/*Modal Box*/
+.modal-header{
+    background-color: #F37934;
+    color:white;
 }
 
 

@@ -15,8 +15,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Se connecter</a></li>
-        <li><a href="#">S'inscrire</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#ModalLogin">Se connecter</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#ModalRegister">S'inscrire</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
