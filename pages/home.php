@@ -1,3 +1,11 @@
+<?php
+if(isset($_POST['register'])){
+   register();
+}elseif(isset($_POST['login'])){
+    login();
+}
+?>
+
 <div class="home">
 <div class="text-vertical-center home-content">
         <h1>MyFinance</h1>

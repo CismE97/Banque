@@ -7,7 +7,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"> Connectez-Vous</h4>
       </div>
-        <form method="post" action="index.html">
+        <form method="post" action="">
         <div class="modal-body">
                 <div class="form-group">
                     <label for="email">Adresse e-mail :</label>
@@ -19,6 +19,7 @@
               </div>
               <div class="checkbox">
                 <label><input type="checkbox"> Se souvenir de moi !</label>
+                <input type="hidden" value="1" name="login" />
               </div>  
       </div>
       <div class="modal-footer">

@@ -9,6 +9,7 @@
 	<link href="style.css" rel="stylesheet">
   </head>
   <body>
+     <?php include("./includes/functions.php");?>
     <?php include("./includes/header.php");?>
     <?php if(!isset($_GET["page"])){    
         include("pages/home.php"); 
