@@ -1,0 +1,52 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+.navbar {
+	margin:0;
+	border-radius:0;
+    background-color:#F37934;
+}
+/*Navbar*/
+.navbar-default .navbar-brand{color:white;}
+.navbar-default .navbar-nav>li>a{color:white;}
+
+
+/* Header */
+.home {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background:url('./img/bg.png') no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.home-content{
+	opacity:1;
+	display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+hr {
+    max-width: 80px;
+    border-color: #F37934;
+    border-width: 3px;
+}
+
+
+.btn-primary{
+    background-color: #F37934;
+    border-color: #F37934;
+}
+
+.btn-info{
+    background-color: #272425;
+    border-color: #272425;
+    
+}
+
+
