@@ -32,11 +32,12 @@ body {
     vertical-align: middle;
 }
 hr {
-    max-width: 80px;
-    border-color: #F37934;
-    border-width: 3px;
+    height: 2px;
+    background-color:#555;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 75%;
 }
-
 /*BTN*/
 .btn-primary, .btn-primary:visited{
     background-color: #F37934;
@@ -64,4 +65,24 @@ hr {
     color:white;
 }
 
+/*Dashboard*/
+.dashboard_chart{
+    display:inline-block;
+    width: 30%;
+}
+.dashboard_last_paid{
+    display:inline-block;
+    width: 70%; 
+}
+#add{
+   vertical-align: middle;
+    height: 100%;   
+}
+.number{
+    text-align: center;
+}
+.number p{
+   font-size: 5em;
+   color : #F37934
+}
 
