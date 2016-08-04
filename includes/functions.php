@@ -1,11 +1,10 @@
 <?php function login(){
-    echo 'test';
-    die();
+     header('Location: ./dashboard');
 }
 
 
 function register(){
-    echo 'test2';
+   
     die();
 }
 

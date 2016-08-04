@@ -18,8 +18,15 @@
         <div class="row">
             <div class="col-xs-12">     
             <?php
+            echo 'test';
             if(isset($_GET["page"])) {
               switch ($_GET['page']) {
+                case "home":
+                include("pages/home.php");
+                break;
+                case "dashboard":
+                include("pages/dashboard.php");
+                break;
                 default:
                 include("pages/404.php");
                 break;
@@ -30,10 +37,6 @@
   </section><?php }?>
       
       <?php include("./includes/footer.php");?>    
-    
-      
-      
-      
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
