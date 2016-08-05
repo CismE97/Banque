@@ -11,14 +11,14 @@
         <div class="modal-body">
                 <div class="form-group">
                     <label for="email">Adresse e-mail :</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" id="email" name="email">
                 </div>
               <div class="form-group">
                 <label for="pwd">Mot de passe :</label>
-                <input type="password" class="form-control" id="pwd">
+                <input type="password" class="form-control" id="pwd" name="pwd">
               </div>
               <div class="checkbox">
-                <label><input type="checkbox"> Se souvenir de moi !</label>
+                <label><input type="checkbox" name="login_auto"> Se souvenir de moi !</label>
                 <input type="hidden" value="1" name="login" />
               </div>  
       </div>

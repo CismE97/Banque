@@ -16,12 +16,15 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" data-toggle="modal" data-target="#ModalLogin">Se connecter</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#ModalRegister">S'inscrire</a></li>
+          <?php if(!isLogged()){ ?> 
+            <li><a href="#" data-toggle="modal" data-target="#ModalLogin">Se connecter</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#ModalRegister">S'inscrire</a></li>
+          <?php }else{ ?>
+            <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>  
+            <li><a href="./logout"><i class="glyphicon glyphicon-off"></i></a></li>  
+          <?php } ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-
 </header>

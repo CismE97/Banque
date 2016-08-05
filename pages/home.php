@@ -2,7 +2,16 @@
 if(isset($_POST['register'])){
    register();
 }elseif(isset($_POST['login'])){
-    login();
+    if(isset($_POST['login_auto'])){
+        login($_POST['email'],$_POST['pwd'],$_POST['login_auto']);
+    }else{
+        if(login($_POST['email'],$_POST['pwd'])){
+             header('Location: ./dashboard'); 
+        }else{
+            echo 'false';
+            die();
+        }
+    }
 }
 ?>
 

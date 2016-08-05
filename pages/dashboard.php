@@ -1,6 +1,13 @@
+<?php 
+if(!isLogged()){
+   header('Location: ./'); 
+}else{
+?>
+
+
 <div class="row" style="margin:1%;">
 <div class="col-md-11">
-    <h2>Dashboard de Christe Thibaud</h2>
+    <h2>Dashboard de Laure Dinateure</h2>
 </div>
 <div class="col-md-1">
     <button type="button" id="add" class="btn btn-default btn-lg">
@@ -110,6 +117,6 @@
     <h3>Somme restante : </h3>
     <p>122.50 CHF</p>
 </div>
-
+<?php }?>
 
  

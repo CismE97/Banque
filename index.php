@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,6 +27,9 @@
                 break;
                 case "dashboard":
                 include("pages/dashboard.php");
+                break;
+                case "logout":
+                include("pages/logout.php");
                 break;
                 default:
                 include("pages/404.php");
