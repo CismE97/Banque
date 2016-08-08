@@ -44,9 +44,43 @@ function login($email,$pwd,$login_auto=false){
 
 }
 
-
-function register(){
+function register($name,$firstname,$email,$pwd,$pwd2,$date_naiss){
+    echo $name;
+    echo $firstname;
+    echo $email;
+    echo $pwd;
+    echo $pwd2;
+    echo $date_naiss;
+    
     die();
+    /*$req = $bdd->prepare('INSERT INTO users(name_users, first_name_users, email_users, mdp_users) VALUES(:nom, :possesseur, :console, :prix, :nbre_joueurs_max, :commentaires)');
+    $req->execute(array(
+	'nom' => $nom,
+	'possesseur' => $possesseur,
+	'console' => $console,
+	'prix' => $prix,
+	'nbre_joueurs_max' => $nbre_joueurs_max,
+	'commentaires' => $commentaires
+	));*/
+}
+
+
+
+function getLastExpenses(){
+   $bdd = login_bd();
+   
+   $first_day = date('Y-m-d', strtotime('first day of this month')).'<br/>';
+   $last_day = date('Y-m-d', strtotime('last day of this month'));
+    
+   $req = $bdd->prepare("SELECT e.`description_spe`, e.`date_spe`, e.`price_spe`, c.`name_cat` FROM expenses e INNER JOIN category c ON c.`id_cat` = e.`cat_spe` WHERE e.`fk_user_spe` = ? and  e.`date_spe` between ? and ? ORDER BY  e.`date_spe` DESC LIMIT 10");
+   $req->execute(array($_SESSION['logged_id'],$first_day,$last_day));
+  
+   $table = "";
+    while ($donnees = $req->fetch()){
+       $table.="<tr><td>".$donnees['description_spe']."</td><td>".$donnees['name_cat']."</td><td>".$donnees['date_spe']."</td><td> CHF ".$donnees['price_spe']."</td></tr>";     
+    }
+    return $table;
+    
 }
 
 

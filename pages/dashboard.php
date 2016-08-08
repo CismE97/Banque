@@ -25,7 +25,7 @@ if(!isLogged()){
    
  </div>
 <div class="col-md-8">
-    <h3>Dernière dépenses : <?php echo  utf8_encode(strftime("%B %Y")); ?></h3>
+    <h3>Dernières dépenses : <?php echo  utf8_encode(strftime("%B %Y")); ?></h3>
     <table class="table" >
         <thead>
             <tr>
@@ -36,66 +36,7 @@ if(!isLogged()){
             </tr>
         </thead>
     <tbody>
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr>
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr> 
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr> 
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr> 
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr> 
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr> 
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr> 
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr> 
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr> 
-        <tr>
-            <td>Course de la semaine</td>
-            <td>Nourriture</td> 
-            <td>04/08/2016</td>
-            <td>CHF 122.5</td>
-        </tr> 
+         <?php echo getLastExpenses();?> 
     </tbody>
     </table>
     <div class="row">

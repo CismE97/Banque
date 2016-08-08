@@ -11,17 +11,19 @@
         <div class="modal-body">
                 <div class="form-group">
                     <label for="name">Nom :</label>
-                    <input type="text" class="form-control" id="name" required>
+                    <input type="text" class="form-control" name="name" id="name" required>
                     <label for="firstname">Prénom :</label>
-                    <input type="text" class="form-control" id="firstname" required>
+                    <input type="text" class="form-control" name="firstname" id="firstname" required>
+                     <label for="email">E-Mail :</label>
+                    <input type="email" class="form-control" name="email" id="email" required>
                 </div>
               <div class="form-group">
                 <label for="pwd">Mot de passe :</label>
-                <input type="password" class="form-control" id="pwd" required>
+                <input type="password" class="form-control" name="pwd" id="pwd" required>
                 <label for="pwd2">Retapez votre mot de passe :</label>
-                <input type="password" class="form-control" id="pwd2" required>
+                <input type="password" class="form-control" name="pwd2" id="pwd2" required>
                 <label for="date_naiss">Retapez votre mot de passe :</label>
-                <input type="date" class="form-control" id="date_naiss" required>
+                <input type="date" class="form-control" name="date_naiss" id="date_naiss" required>
               </div>
               <div class="checkbox">
                 <label><input type="checkbox" required> J'accepte les conditions </label>
