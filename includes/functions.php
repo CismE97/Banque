@@ -64,12 +64,14 @@ function register($name,$firstname,$email,$pwd,$pwd2,$date_naiss){
 	));*/
 }
 
-
-
+/*
+- Fonction getLastExpenses
+- Retourne les 10 dernières dépenses
+*/
 function getLastExpenses(){
    $bdd = login_bd();
    
-   $first_day = date('Y-m-d', strtotime('first day of this month')).'<br/>';
+   $first_day = date('Y-m-d', strtotime('first day of this month'));
    $last_day = date('Y-m-d', strtotime('last day of this month'));
     
    $req = $bdd->prepare("SELECT e.`description_spe`, e.`date_spe`, e.`price_spe`, c.`name_cat` FROM expenses e INNER JOIN category c ON c.`id_cat` = e.`cat_spe` WHERE e.`fk_user_spe` = ? and  e.`date_spe` between ? and ? ORDER BY  e.`date_spe` DESC LIMIT 10");
@@ -77,11 +79,37 @@ function getLastExpenses(){
   
    $table = "";
     while ($donnees = $req->fetch()){
-       $table.="<tr><td>".$donnees['description_spe']."</td><td>".$donnees['name_cat']."</td><td>".$donnees['date_spe']."</td><td> CHF ".$donnees['price_spe']."</td></tr>";     
+       $table.="<tr><td>".$donnees['description_spe']."</td><td>".$donnees['name_cat']."</td><td>".date("d/m/Y", strtotime($donnees['date_spe']))."</td><td> CHF ".$donnees['price_spe']."</td></tr>";     
     }
     return $table;
-    
 }
+
+/*
+- Fonction getTotalExpenses
+- Retourne le total dépensé pour le mois en cours
+*/
+function getTotalExpenses(){
+    $bdd = login_bd();
+   
+    $first_day = date('Y-m-d', strtotime('first day of this month'));
+    $last_day = date('Y-m-d', strtotime('last day of this month'));
+    
+    
+    $req = $bdd->prepare("SELECT SUM(e.`price_spe`) somme FROM expenses e  WHERE e.`fk_user_spe` = ? and  e.`date_spe` between ? and ?");
+    $req->execute(array($_SESSION['logged_id'],$first_day,$last_day));  
+   
+    while ($donnees = $req->fetch()){
+       $total = $donnees['somme'];
+    
+    }
+    return $total;  
+}
+
+
+
+
+
+
 
 
 

@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MyFinance</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      
 	<link href="style.css" rel="stylesheet">
   </head>
   <body>

@@ -16,11 +16,10 @@ if(!isLogged()){
 </div>
 </div>
 
-
-
 <div class="row">
 <div class="col-md-4">
     <h3>Consommation : <?php echo  utf8_encode(strftime("%B %Y")); ?></h3>
+    <p hidden id="hiddenID"><?php echo $_SESSION['logged_id'];?></p>
     <canvas id="lineChart" width="400" height="400"></canvas>
    
  </div>
@@ -51,12 +50,12 @@ if(!isLogged()){
 </div>
 <div class="row" style="margin:1%;">
 <div class="col-md-6 number">
-    <h3>Budget : </h3>
-    <p>500 CHF</p>
+    <h3>Somme restante : </h3>
+    <p>CHF <?php echo round(500-getTotalExpenses(),2);?></p>
 </div>
 <div class="col-md-6 number">
-    <h3>Somme restante : </h3>
-    <p>122.50 CHF</p>
+    <h3>Somme dépensée : </h3>
+    <p>CHF <?php echo round(getTotalExpenses(),2);?></p>
 </div>
 <?php }?>
 
