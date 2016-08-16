@@ -9,6 +9,10 @@
       </div>
         <form method="post" action="">
         <div class="modal-body">
+            <div class="alert alert-success" role="alert">
+                <p><strong>Informations de connexion provisoires : </strong></p>
+                <p>Email : test@gmail.com<br/>Mot de passe : 1234</p>
+            </div>
                 <div class="form-group">
                     <label for="email">Adresse e-mail :</label>
                     <input type="email" class="form-control" id="email" name="email">

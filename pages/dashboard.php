@@ -2,6 +2,9 @@
 if(!isLogged()){
    header('Location: ./'); 
 }else{
+    if(isset($_POST['addExpense'])){
+       addExpenses($_POST['description'], $_POST['category'], $_POST['date'], $_POST['price']);
+    }  
 ?>
 
 
@@ -10,7 +13,7 @@ if(!isLogged()){
     <h2>Dashboard de Laure Dinateure</h2>
 </div>
 <div class="col-md-1">
-    <button type="button" id="add" class="btn btn-default btn-lg">
+    <button type="button" id="add" class="btn btn-default btn-lg" data-toggle="modal" data-target="#ModalAddExpense">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </button>
 </div>
@@ -57,6 +60,8 @@ if(!isLogged()){
     <h3>Somme dépensée : </h3>
     <p>CHF <?php echo round(getTotalExpenses(),2);?></p>
 </div>
+    
+ <?php include("./includes/modalAddExpense.php");?>
 <?php }?>
 
  

@@ -105,6 +105,19 @@ function getTotalExpenses(){
     return $total;  
 }
 
+function addExpenses($description,$category,$date,$price){
+    $bdd = login_bd();
+   
+    $req = $bdd->prepare('INSERT INTO expenses(`fk_user_spe`, `date_spe`, `description_spe`, `price_spe`, `cat_spe`) VALUES(:user, :date, :description, :price, :category)');
+    $req->execute(array(
+	'user' => $_SESSION['logged_id'],
+	'date' => $date,
+	'description' => $description,
+	'price' => $price,
+	'category' => $category
+	));
+}
+
 
 
 

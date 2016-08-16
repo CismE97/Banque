@@ -1,6 +1,14 @@
 <header>
-<?php setlocale (LC_TIME, 'fr_FR.utf8','fra');?>
-<nav class="navbar navbar-default">
+<?php setlocale (LC_TIME, 'fr_FR.utf8','fra');
+if(!isset($_GET["page"])||$_GET["page"]=='home'){?>
+<nav class="navbar navbar-default navbar-fixed-top">  
+    
+<?php }else{ ?>
+<nav class="navbar navbar-default">  
+    
+<?php   } ?> 
+    
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
