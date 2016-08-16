@@ -84,8 +84,39 @@ hr {
 }
 .number p{
    font-size: 5em;
-   color : #F37934
+   color : #F37934;
 }
+
+/*Account*/
+.account{
+    margin-top: 3%;
+}
+.account button{float:right;}
+.account .register_date{
+    margin-top: 20px;
+}
+.navbar_account{
+    margin-top: 2%;
+    padding: 10px;
+    background-color: #F37934;
+    color:white; 
+}
+
+.row.vdivide [class*='col-']:not(:last-child):after {
+  vertical-align: middle;
+  background: #e0e0e0;
+  width: 1px;
+  content: "";
+  display:block;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right: 0;
+  min-height: 20px;
+ 
+}
+.row.vdivide p{margin:0;}
+.row.vdivide p a {color:white;}
 
 
 /*Footer*/

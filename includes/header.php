@@ -18,7 +18,7 @@ if(!isset($_GET["page"])||$_GET["page"]=='home'){?>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./dashboard">MyFinance</a>
+      <a class="navbar-brand" href="<?php echo BASE_URL?>./dashboard">MyFinance</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,7 +28,7 @@ if(!isset($_GET["page"])||$_GET["page"]=='home'){?>
             <li><a href="#" data-toggle="modal" data-target="#ModalLogin">Se connecter</a></li>
             <li><a href="#" data-toggle="modal" data-target="#ModalRegister">S'inscrire</a></li>
           <?php }else{ ?>
-            <li><a href="#"><i class="glyphicon glyphicon-user"></i></a></li>  
+            <li><a href="./myaccount"><i class="glyphicon glyphicon-user"></i></a></li>  
             <li><a href="./logout"><i class="glyphicon glyphicon-off"></i></a></li>  
           <?php } ?>
       </ul>

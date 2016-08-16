@@ -118,6 +118,19 @@ function addExpenses($description,$category,$date,$price){
 	));
 }
 
+function getDataUser($id){
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT `name_users`,`first_name_users`, `email_users`, `mdp_users`,`birth_date_users`, `registration_date_users` FROM users WHERE `id_users`=?");
+    $req->execute(array($id));
+    
+    $data = array();
+    while ($donnees = $req->fetch()){
+       array_push($data, $donnees['name_users'], $donnees['first_name_users'],$donnees['email_users'],$donnees['mdp_users'], $donnees['birth_date_users'], $donnees['registration_date_users']);
+    }
+    return $data;
+    
+}
+
 
 
 
