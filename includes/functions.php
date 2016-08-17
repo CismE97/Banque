@@ -127,8 +127,33 @@ function getDataUser($id){
     while ($donnees = $req->fetch()){
        array_push($data, $donnees['name_users'], $donnees['first_name_users'],$donnees['email_users'],$donnees['mdp_users'], $donnees['birth_date_users'], $donnees['registration_date_users']);
     }
-    return $data;
-    
+    return $data; 
+}
+
+function updateUser($name,$firstname,$email,$old_pwd,$date_naiss,$pwd = null){    
+    //Get old password
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT `mdp_users` FROM users WHERE `id_users`=?");
+    $req->execute(array($_SESSION['logged_id']));
+    while ($donnees = $req->fetch()){
+       $old_mdp_DB = $donnees['mdp_users'];
+    }
+    //IF same password
+    if($old_mdp_DB == $old_pwd){
+        $bdd = login_bd();
+        $req = $bdd->prepare('UPDATE users SET name_users = :name_users, first_name_users = :firstname, email_users = :email, birth_date_users = :date_naiss WHERE id_users = :id');
+        $req->execute(array(
+            'name_users' => $name,
+            'firstname' => $firstname,
+            'email' => $email,
+            'date_naiss' => $date_naiss,
+            'id' => $_SESSION['logged_id']
+        )); 
+        return 'OK-Modification effectuée avec succès !';
+    }else{
+        $erreur = "ER-Mot de passe incorrect !"; 
+        return $erreur;
+    }  
 }
 
 

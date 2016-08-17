@@ -3,8 +3,8 @@ if(!isLogged()){
    header('Location: ./'); 
 }else{
      $data = getDataUser($_SESSION['logged_id']);
-     $first_name = $data[0];
-     $name = $data[1];
+     $first_name = $data[1];
+     $name = $data[0];
      $email = $data[2];
      $mdp = $data[3];
      $birth_date_users = $data[4];
@@ -28,8 +28,8 @@ if(!isLogged()){
 <div class="row">
     <div class="col-md-12 navbar_account">
         <div class="row vdivide">
-            <div class="col-sm-2 text-center"><p><a href="./myaccount">Profil</a></p></div>
-            <div class="col-sm-2 text-center"><p><a href="./myaccount/settings">Paramètres</a></p></div>
+            <div class="col-sm-2 text-center"><p><a href="<?php echo BASE_URL?>./myaccount">Profil</a></p></div>
+            <div class="col-sm-2 text-center"><p><a href="<?php echo BASE_URL?>./myaccount/settings">Paramètres</a></p></div>
         </div>
     </div>
 </div>
