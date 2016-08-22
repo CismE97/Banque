@@ -22,7 +22,7 @@ if(!isLogged()){
     </div>
     <div class="col-md-4">
         <p class="register_date">Date d'inscription : <?php echo $registration_date; ?></p>
-        <p class="budget">Budget :  CHF 500</p>
+        <p class="budget">Budget :  <?php echo getCurrencyAbridged();?> <?php echo getBudget();?></p>
     </div>
 </div>
 <div class="row">

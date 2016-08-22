@@ -28,7 +28,7 @@ if(!isset($_GET["page"])||$_GET["page"]=='home'){?>
             <li><a href="#" data-toggle="modal" data-target="#ModalLogin">Se connecter</a></li>
             <li><a href="#" data-toggle="modal" data-target="#ModalRegister">S'inscrire</a></li>
           <?php }else{ ?>
-            <li><a href="./myaccount"><i class="glyphicon glyphicon-user"></i></a></li>  
+            <li><a href="<?php echo BASE_URL?>./myaccount"><i class="glyphicon glyphicon-user"></i></a></li>  
             <li><a href="./logout"><i class="glyphicon glyphicon-off"></i></a></li>  
           <?php } ?>
       </ul>

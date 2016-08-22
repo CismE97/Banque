@@ -5,7 +5,6 @@ function login_bd(){
     }catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
-    
     return $bdd;
 }
 
@@ -79,7 +78,9 @@ function getLastExpenses(){
   
    $table = "";
     while ($donnees = $req->fetch()){
-       $table.="<tr><td>".$donnees['description_spe']."</td><td>".$donnees['name_cat']."</td><td>".date("d/m/Y", strtotime($donnees['date_spe']))."</td><td> CHF ".$donnees['price_spe']."</td></tr>";     
+       $table.="<tr><td>".$donnees['description_spe']."</td><td>".$donnees['name_cat']."</td><td>".date("d/m/Y", strtotime($donnees['date_spe']))."</td><td>".getCurrencyAbridged()." ".$donnees['price_spe']."</td><td>
+       <a href='#'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></a></span>
+       <a href='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></a></span></td></tr>";     
     }
     return $table;
 }
@@ -107,7 +108,6 @@ function getTotalExpenses(){
 
 function addExpenses($description,$category,$date,$price){
     $bdd = login_bd();
-   
     $req = $bdd->prepare('INSERT INTO expenses(`fk_user_spe`, `date_spe`, `description_spe`, `price_spe`, `cat_spe`) VALUES(:user, :date, :description, :price, :category)');
     $req->execute(array(
 	'user' => $_SESSION['logged_id'],
@@ -130,7 +130,7 @@ function getDataUser($id){
     return $data; 
 }
 
-function updateUser($name,$firstname,$email,$old_pwd,$date_naiss,$pwd = null){    
+function updateUser($name,$firstname,$email,$old_pwd,$date_naiss,$pwd = null,$pwd2 = null){    
     //Get old password
     $bdd = login_bd();
     $req = $bdd->prepare("SELECT `mdp_users` FROM users WHERE `id_users`=?");
@@ -140,21 +140,153 @@ function updateUser($name,$firstname,$email,$old_pwd,$date_naiss,$pwd = null){
     }
     //IF same password
     if($old_mdp_DB == $old_pwd){
-        $bdd = login_bd();
-        $req = $bdd->prepare('UPDATE users SET name_users = :name_users, first_name_users = :firstname, email_users = :email, birth_date_users = :date_naiss WHERE id_users = :id');
-        $req->execute(array(
-            'name_users' => $name,
-            'firstname' => $firstname,
-            'email' => $email,
-            'date_naiss' => $date_naiss,
-            'id' => $_SESSION['logged_id']
-        )); 
-        return 'OK-Modification effectuée avec succès !';
+        if(isset($pwd)){
+            if($pwd == $pwd2){
+                $bdd = login_bd();
+                $req = $bdd->prepare('UPDATE users SET name_users = :name_users, first_name_users = :firstname, email_users = :email, birth_date_users = :date_naiss, mdp_users = :pwd WHERE id_users = :id');
+                $req->execute(array(
+                'name_users' => $name,
+                'firstname' => $firstname,
+                'email' => $email,
+                'date_naiss' => $date_naiss,
+                'pwd' => $pwd,
+                'id' => $_SESSION['logged_id']
+            ));
+                return 'OK-Modification effectuée avec succès !';  
+            }else{
+                $erreur = "ER-Les deux mots de passe ne sont pas identiques!"; 
+                return $erreur;
+            }
+        }else{
+            $bdd = login_bd();
+            $req = $bdd->prepare('UPDATE users SET name_users = :name_users, first_name_users = :firstname, email_users = :email, birth_date_users = :date_naiss WHERE id_users = :id');
+            $req->execute(array(
+                'name_users' => $name,
+                'firstname' => $firstname,
+                'email' => $email,
+                'date_naiss' => $date_naiss,
+                'id' => $_SESSION['logged_id']
+            ));
+            return 'OK-Modification effectuée avec succès !';
+        }
     }else{
         $erreur = "ER-Mot de passe incorrect !"; 
         return $erreur;
     }  
 }
+
+function getCurrency(){
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT c.`name_curr`, c.`abridged_curr` FROM users u INNER JOIN currencies c ON c.`id_cat` = u.`currency_user` WHERE u.`id_users` = ?");
+    $req->execute(array($_SESSION['logged_id'])); 
+    while ($donnees = $req->fetch()){
+       $name_curr = $donnees['name_curr']; 
+    }
+    return $name_curr;
+}
+
+function getCurrencyAbridged(){
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT c.`name_curr`, c.`abridged_curr` FROM users u INNER JOIN currencies c ON c.`id_curr` = u.`currency_user` WHERE u.`id_users` = ?");
+    $req->execute(array($_SESSION['logged_id'])); 
+    while ($donnees = $req->fetch()){
+       $abridged_curr = $donnees['abridged_curr'];
+    }
+    return $abridged_curr;
+}
+
+function getBudget(){
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT `budget_user` FROM users WHERE `id_users` = ?");
+    $req->execute(array($_SESSION['logged_id'])); 
+    while ($donnees = $req->fetch()){
+       $budget_user = $donnees['budget_user'];
+    }
+    return $budget_user;
+}
+
+function getAllCurrencies(){
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT `name_curr`, `id_curr` FROM currencies");
+    $req->execute(array()); 
+    $result = "";
+    while ($donnees = $req->fetch()){
+        if(getCurrency()== $donnees['name_curr']){
+           $result .= "<option value='".$donnees['id_curr']."' selected='selected'>".$donnees['name_curr']."</option>"; 
+        }else{
+            $result .= "<option value='".$donnees['id_curr']."'>".$donnees['name_curr']."</option>";  
+        }
+    }
+    return $result;
+}
+
+function updateUserSettings($budget,$currency){
+  if($budget >= 0 && is_numeric($budget)){
+        $bdd = login_bd();
+        $req = $bdd->prepare('UPDATE users SET budget_user = :budget_user, currency_user = :currency WHERE id_users = :id');
+            $req->execute(array(
+                'budget_user' => $budget,
+                'currency' => $currency,
+                'id' => $_SESSION['logged_id']
+            ));
+      return 'OK-Modification effectuée avec succès !';   
+  }else{
+      return "ER-Budget invalide !";
+  }
+}
+
+function getCategories($id_cat=null){
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT `name_cat`, `id_cat` FROM category");
+    $req->execute(array()); 
+    $result = "";
+    while ($donnees = $req->fetch()){
+        if(isset($id_cat)){
+            if($id_cat == $donnees['id_cat']){
+                $result .= "<option value='".$donnees['id_cat']."' selected='selected'>".$donnees['name_cat']."</option>"; 
+            }else{
+                $result .= "<option value='".$donnees['id_cat']."'>".$donnees['name_cat']."</option>";  
+            }
+        }else{
+            $result .= "<option value='".$donnees['id_cat']."'>".$donnees['name_cat']."</option>";
+        }
+    }
+    return $result;
+}
+
+function getAllExpenses($search=null,$id_cat=null){
+    
+    if(!isset($search)){
+        $search = '%';
+    }
+    if($id_cat==0){
+      $id_cat = '%';
+    }
+    
+    
+    $bdd = login_bd();
+    $first_day = date('Y-m-d', strtotime('first day of this month'));
+    $last_day = date('Y-m-d', strtotime('last day of this month'));
+    $req = $bdd->prepare("
+            SELECT e.`description_spe`, e.`date_spe`, e.`price_spe`, c.`name_cat` 
+            FROM expenses e 
+            INNER JOIN category c 
+            ON c.`id_cat` = e.`cat_spe` 
+            WHERE e.`fk_user_spe` = ? and c.`id_cat` LIKE ? and  e.`date_spe` between ? and ?
+            ORDER BY  e.`date_spe` DESC");
+    $req->execute(array($_SESSION['logged_id'],$id_cat, $first_day,$last_day));
+  
+   $table = "";
+    while ($donnees = $req->fetch()){
+       $table.="<tr><td>".$donnees['description_spe']."</td><td>".$donnees['name_cat']."</td><td>".date("d/m/Y", strtotime($donnees['date_spe']))."</td><td>".getCurrencyAbridged()." ".$donnees['price_spe']."</td><td>
+       <a href='#'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></a></span>
+       <a href='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></a></span></td></tr>";     
+    }
+    return $table;
+    
+    
+}
+
 
 
 

@@ -37,6 +37,9 @@
                     case "myaccount":
                     include("pages/myaccount.php");
                     break;
+                    case "expenses":
+                    include("pages/allExpenses.php");
+                    break;
                     case "logout":
                     include("pages/logout.php");
                     break;

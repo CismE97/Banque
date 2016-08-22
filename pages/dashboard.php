@@ -4,13 +4,16 @@ if(!isLogged()){
 }else{
     if(isset($_POST['addExpense'])){
        addExpenses($_POST['description'], $_POST['category'], $_POST['date'], $_POST['price']);
-    }  
+    }
+    $data = getDataUser($_SESSION['logged_id']);
+    $first_name = $data[1];
+    $name = $data[0];
 ?>
 
 
 <div class="row" style="margin:1%;">
 <div class="col-md-11">
-    <h2>Dashboard de Laure Dinateure</h2>
+    <h2>Dashboard de <?php echo $first_name.' '.$name ?></h2>
 </div>
 <div class="col-md-1">
     <button type="button" id="add" class="btn btn-default btn-lg" data-toggle="modal" data-target="#ModalAddExpense">
@@ -44,7 +47,7 @@ if(!isLogged()){
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2">
-            <a href="#" class="btn btn-primary" role="button">Voir plus...</a>
+            <a href="<?php echo BASE_URL?>./expenses" class="btn btn-primary" role="button">Voir plus...</a>
         </div>
     </div>
 </div>
@@ -54,11 +57,11 @@ if(!isLogged()){
 <div class="row" style="margin:1%;">
 <div class="col-md-6 number">
     <h3>Somme restante : </h3>
-    <p>CHF <?php echo round(500-getTotalExpenses(),2);?></p>
+    <p><?php echo getCurrencyAbridged();?> <?php echo round(getBudget()-getTotalExpenses(),2);?></p>
 </div>
 <div class="col-md-6 number">
     <h3>Somme dépensée : </h3>
-    <p>CHF <?php echo round(getTotalExpenses(),2);?></p>
+    <p><?php echo getCurrencyAbridged();?> <?php echo round(getTotalExpenses(),2);?></p>
 </div>
     
  <?php include("./includes/modalAddExpense.php");?>
