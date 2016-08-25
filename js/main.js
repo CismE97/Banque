@@ -9,8 +9,7 @@ $.ajax({
         const CHART = document.getElementById("lineChart");
         Chart.defaults.global.legend.position = 'bottom';
         
-
-            let lineChart = new Chart (CHART, {
+            var lineChart = new Chart (CHART, {
                 type: 'doughnut',
                 data: data = {
                 labels: labels_name,

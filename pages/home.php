@@ -1,4 +1,5 @@
 <?php
+ob_start();
 if(isset($_POST['register'])){
  register($_POST['name'],$_POST['firstname'],$_POST['email'],$_POST['pwd'],$_POST['pwd2'],$_POST['date_naiss']);
 }elseif(isset($_POST['login'])){
@@ -6,7 +7,8 @@ if(isset($_POST['register'])){
         login($_POST['email'],$_POST['pwd'],$_POST['login_auto']);
     }else{
         if(login($_POST['email'],$_POST['pwd'])){
-             header('Location: ./dashboard'); 
+            echo '<script>document.location.href="./dashboard";</script>';
+            exit();
         }else{
             echo 'false';
             die();

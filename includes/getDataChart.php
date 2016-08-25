@@ -14,7 +14,7 @@ function getDataChart($id_user){
     
     $data = array();
     try{
-	   $bdd = new PDO('mysql:host=localhost;dbname=myfinance;charset=utf8', 'root', '');
+	   $bdd = new PDO('mysql:host=localhost;dbname=myfinance;charset=utf8', 'root', 'root');
     }catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }

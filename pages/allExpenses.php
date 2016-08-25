@@ -1,18 +1,19 @@
 <?php 
 if(!isLogged()){
-   header('Location: ./'); 
+    echo '<script>document.location.href="./";</script>';
 }else{
     $id_cat = null;
     if(isset($_POST['submit'])){
         $search = $_POST['search'];
+        $month = $_POST["month"];
+        $year = $_POST["year"];
+        
         if(isset($_POST["category"])) {
             $id_cat = $_POST['category'];
-            $allExpenses = getAllExpenses($search,$id_cat);
+            $allExpenses = getAllExpenses($search,$id_cat,$month,$year);
         }else{
-            $allExpenses = getAllExpenses($search);
-        }
-        
-       
+            $allExpenses = getAllExpenses($search,$month,$year);
+        }  
     }else{
         $allExpenses = getAllExpenses(); 
     }
@@ -28,7 +29,7 @@ if(!isLogged()){
       <div class="form-group">
         <label class="sr-only" for="exampleInputAmount">Description</label>
         <div class="input-group">
-          <input type="text" name="search" class="form-control" id="exampleInputAmount" placeholder="Recherche">
+          <input type="text" name="search" value="<?php echo $search;?>"class="form-control" id="exampleInputAmount" placeholder="Recherche">
           <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
         </div>
         <div class="input-group">
@@ -40,28 +41,33 @@ if(!isLogged()){
         </div>  
         <div class="input-group">
             <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
-             <select class="form-control">
-                 <?php 
+             <select name="month" class="form-control">
+                 <?php
                     for ($m=1; $m<=12; $m++) {
-                        echo '  <option value="' . $m . '">' . date('F', mktime(0,0,0,$m)) . '</option>';
+                        if($month == $m){
+                            echo '  <option value="' . $m . '"selected>' . date('F', mktime(0,0,0,$m)) . '</option>';
+                        }else{
+                            echo '  <option value="' . $m . '">' . date('F', mktime(0,0,0,$m)) . '</option>';
+                        }     
                     }
                  ?>
-                 
             </select>   
         </div>
         <div class="input-group">
             <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
-             <select class="form-control">
-                  <option>2016</option>
-                  <option>2015</option>
-                  <option>2014</option>
-                  <option>2013</option>
-                  <option>2012</option>
+             <select name="year" class="form-control">
+                   <?php
+                        for ($y=0; $y<=10; $y++){
+                            if($year == date("Y",strtotime("-".$y." year"))){
+                                echo "<option selected>".date("Y",strtotime("-".$y." year"))."</option>";
+                            }else{
+                                echo "<option>".date("Y",strtotime("-".$y." year"))."</option>";
+                            }
+                            
+                        }
+                    ?>
             </select>   
         </div>
-          
-          
-          
       </div>
       <button name="submit" type="submit" class="btn btn-primary">Valider</button>
     </form>

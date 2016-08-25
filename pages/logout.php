@@ -1,4 +1,4 @@
 <?php 
 session_destroy();
-header('Location: ./'); 
+echo '<script>document.location.href="./";</script>';
 ?>
