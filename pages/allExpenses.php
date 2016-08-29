@@ -29,7 +29,7 @@ if(!isLogged()){
       <div class="form-group">
         <label class="sr-only" for="exampleInputAmount">Description</label>
         <div class="input-group">
-          <input type="text" name="search" value="<?php echo $search;?>"class="form-control" id="exampleInputAmount" placeholder="Recherche">
+          <input type="text" name="search" value="<?php if(isset($search)){echo $search;}?>"class="form-control" id="exampleInputAmount" placeholder="Recherche">
           <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
         </div>
         <div class="input-group">

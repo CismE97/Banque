@@ -2,13 +2,15 @@
 <?php setlocale (LC_TIME, 'fr_FR.utf8','fra');
 if(!isset($_GET["page"])||$_GET["page"]=='home'){?>
 <nav class="navbar navbar-default navbar-fixed-top">  
-    
 <?php }else{ ?>
 <nav class="navbar navbar-default">  
+<?php   
+    $data = getDataUser($_SESSION['logged_id']);
+    $first_name = $data[1];
+    $name = $data[0];
+} ?> 
     
-<?php   } ?> 
-    
-<nav class="navbar navbar-default navbar-fixed-top">
+
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -28,7 +30,8 @@ if(!isset($_GET["page"])||$_GET["page"]=='home'){?>
             <li><a href="#" data-toggle="modal" data-target="#ModalLogin">Se connecter</a></li>
             <li><a href="#" data-toggle="modal" data-target="#ModalRegister">S'inscrire</a></li>
           <?php }else{ ?>
-            <li><a href="<?php echo BASE_URL?>./myaccount"><i class="glyphicon glyphicon-user"></i></a></li>  
+          <li><a href="<?php echo BASE_URL?>./budget"><i class="glyphicon glyphicon-usd"></i> Budget</a></li>
+            <li><a href="<?php echo BASE_URL?>./myaccount"><i class="glyphicon glyphicon-user"></i> <?php echo $first_name.' '.$name;?></a></li>  
             <li><a href="./logout"><i class="glyphicon glyphicon-off"></i></a></li>  
           <?php } ?>
       </ul>
