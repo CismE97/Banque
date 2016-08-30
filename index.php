@@ -24,7 +24,11 @@
             if(isset($_GET["spage"])){
                 if($_GET["spage"] == 'settings'){
                    include("pages/myaccountSettings.php");
+                    
+                }elseif($_GET["page"] == 'delExpense' && is_numeric($_GET["spage"])){
+                    include("pages/delExpense.php");
                 }
+                
             }else{
                 if(isset($_GET["page"])) {
                   switch ($_GET['page']) {
@@ -60,6 +64,11 @@
     <script src="<?php echo BASE_URL?>./bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
     <script src="<?php echo BASE_URL?>./js/main.js"></script>
+    <script>
+     
+      
+      
+    </script>
      <!--<script src="./js/viewportchecker.js"></script>-->
     <!--<script src="./js/scripts.js"></script>-->
   </body>

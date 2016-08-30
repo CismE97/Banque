@@ -39,6 +39,14 @@ $.ajax({
     }
 });
 
+ function confirmDelete(id) {
+     var r = confirm("Voulez-vous vraiement supprimer cet enregistrement ?");
+     if (r == true) {
+         var URL = "./delExpense/"+id;
+         document.location.href= URL;
+     }
+    }
+
 
 
 
