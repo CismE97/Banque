@@ -264,7 +264,7 @@ function getAllExpenses($search = null,$id_cat = null,$month = null, $year = nul
     
     $bdd = login_bd();
     $req = $bdd->prepare("
-            SELECT e.`description_spe`, e.`date_spe`, e.`price_spe`, c.`name_cat` 
+            SELECT e.`id_spe`, e.`description_spe`, e.`date_spe`, e.`price_spe`, c.`name_cat` 
             FROM expenses e 
             INNER JOIN category c 
             ON c.`id_cat` = e.`cat_spe` 
@@ -289,7 +289,7 @@ function getAllExpenses($search = null,$id_cat = null,$month = null, $year = nul
         while ($donnees = $req->fetch()){
            $table.="<tr><td>".$donnees['description_spe']."</td><td>".$donnees['name_cat']."</td><td>".date("d/m/Y", strtotime($donnees['date_spe']))."</td><td>".getCurrencyAbridged()." ".$donnees['price_spe']."</td><td>
            <a href='#'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></a></span>
-           <a href='#'><span class='glyphicon glyphicon-trash' aria-hidden='true'></a></span></td></tr>";     
+           <a href='#' onclick='confirmDelete(".$donnees['id_spe'].")'><span class='glyphicon glyphicon-trash' aria-hidden='true'></a></span></td></tr>";     
         }  
     }else{
         $table.="<tr><td>Aucun résultat</td></tr>";
