@@ -10,6 +10,7 @@
     <title>MyFinance</title>
     <link href="<?php echo BASE_URL?>./bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo BASE_URL?>./style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL?>./animate.css" rel="stylesheet">
   </head>
   <body>
      <?php include("./includes/functions.php");?>

@@ -20,7 +20,11 @@ if(!isset($_GET["page"])||$_GET["page"]=='home'){?>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo BASE_URL?>./dashboard">MyFinance</a>
+        <?php if(!isLogged()){ ?> 
+            <a class="navbar-brand" href="<?php echo BASE_URL?>./">MyFinance</a>
+        <?php }else{ ?>
+            <a class="navbar-brand" href="<?php echo BASE_URL?>./dashboard">MyFinance</a>
+        <?php } ?>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
