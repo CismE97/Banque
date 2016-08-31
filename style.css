@@ -66,6 +66,12 @@ body {
     text-align: center;
     vertical-align: middle;
 }
+.hidden2{
+    opacity: 0;
+}
+visible{
+    opacity: 1 !important;
+}
 hr {
     height: 2px;
     background-color:#555;

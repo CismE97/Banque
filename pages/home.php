@@ -37,7 +37,7 @@ if(isset($_POST['register'])){
     <div id="more">
         <div class="row">
             <div class="col-md-6">
-                <p><img class="img-responsive phone"src="./img/phone.png"/></p>
+                <p><img class="img-responsive phone img-home "src="./img/phone.png"/></p>
             </div>
             <div class="col-md-6">
                 <h3>Gérez vos finances facilement</h3>
@@ -64,7 +64,7 @@ if(isset($_POST['register'])){
                 </ul>
             </div>
             <div class="col-md-6">
-                <p><img class="img-responsive"src="./img/devices.jpg"/></p>
+                <p><img class="img-responsive img-home"src="./img/devices.jpg"/></p>
             </div>
         </div>
     </div>

@@ -47,7 +47,6 @@ $.ajax({
      }
     }
 
-
 $(document).ready(function(){
    $('.js-scrollTo').on('click',function (){
        var page = $(this).attr('href');
@@ -55,6 +54,14 @@ $(document).ready(function(){
        $('html, body').animate({scrollTop : $(page).offset().top - 70}, speed);
        return false;
    }); 
+});
+
+jQuery(document).ready(function() {
+    $('.img-home').addClass("hidden2").viewportChecker({
+            classToAdd: 'visible animated flipInX', // Class to add to the elements when they are visible
+            offset: 100   
+    }); 
+    $('.img-home').removeClass("hidden2");
 });
 
 

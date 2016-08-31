@@ -65,6 +65,7 @@
     <script src="<?php echo BASE_URL?>./bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
     <script src="<?php echo BASE_URL?>./js/main.js"></script>
+    <script src="<?php echo BASE_URL?>./js/viewportchecker.js"></script>
     <script>
      
       
