@@ -1,7 +1,15 @@
 <?php
 ob_start();
 if(isset($_POST['register'])){
- register($_POST['name'],$_POST['firstname'],$_POST['email'],$_POST['pwd'],$_POST['pwd2'],$_POST['date_naiss']);
+    if(register($_POST['name'],$_POST['firstname'],$_POST['email'],$_POST['pwd'],$_POST['pwd2'],$_POST['date_naiss'])){
+        $result = "<div class='alert alert-success'>
+                            <p><strong>Vous pouvez vous connecter !</strong></p>
+                        </div>";
+    }else{
+        $result = "<div class='alert alert-danger'>
+                            <p><strong>Inscription impossible ! </strong> Les deux mots de passes ne sont pas identiques </p>
+                        </div>";
+    }
 }elseif(isset($_POST['login'])){
     if(isset($_POST['login_auto'])){
         login($_POST['email'],$_POST['pwd'],$_POST['login_auto']);
@@ -10,8 +18,9 @@ if(isset($_POST['register'])){
             echo '<script>document.location.href="./dashboard";</script>';
             exit();
         }else{
-            echo 'false';
-            die();
+            $result = "<div class='alert alert-danger'>
+                            <p><strong>Connexion impossible ! </strong> Mot de passe ou adresse e-mail incorrect </p>
+                        </div>";
         }
     }
 }
@@ -19,6 +28,12 @@ if(isset($_POST['register'])){
 
 <div class="home">
 <div class="text-vertical-center home-content">
+        <div class="form-group">
+            <div class="col-sm-12">
+                <?php if(isset($result)){echo $result;} ?> 
+            </div>
+        </div>
+    
         <h1>MyFinance</h1>
         <hr>
         <h3>L'application pour gérer son argent !</h3>
@@ -69,9 +84,6 @@ if(isset($_POST['register'])){
         </div>
     </div>
 </section>
-
-
-
 <?php include("./includes/footer.php")?>
 <?php include("./includes/modalLogin.php");?>
 <?php include("./includes/modalRegister.php");?> 

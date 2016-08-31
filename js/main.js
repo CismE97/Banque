@@ -55,8 +55,7 @@ $(document).ready(function(){
        return false;
    }); 
 });
-
-jQuery(document).ready(function() {
+$(document).ready(function() {
     $('.img-home').addClass("hidden2").viewportChecker({
             classToAdd: 'visible animated flipInX', // Class to add to the elements when they are visible
             offset: 100   

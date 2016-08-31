@@ -30,7 +30,7 @@ function login($email,$pwd,$login_auto=false){
     }
     
     if(isset($email_BD)){
-        if($email_BD == $email && $mdp_BD==$pwd){
+        if($email_BD == $email && password_verify($pwd, $mdp_BD)){
             $_SESSION['logged'] = true;
             $_SESSION['logged_id'] = $id;
             return true;
@@ -44,23 +44,22 @@ function login($email,$pwd,$login_auto=false){
 }
 
 function register($name,$firstname,$email,$pwd,$pwd2,$date_naiss){
-    echo $name;
-    echo $firstname;
-    echo $email;
-    echo $pwd;
-    echo $pwd2;
-    echo $date_naiss;
-    
-    die();
-    /*$req = $bdd->prepare('INSERT INTO users(name_users, first_name_users, email_users, mdp_users) VALUES(:nom, :possesseur, :console, :prix, :nbre_joueurs_max, :commentaires)');
-    $req->execute(array(
-	'nom' => $nom,
-	'possesseur' => $possesseur,
-	'console' => $console,
-	'prix' => $prix,
-	'nbre_joueurs_max' => $nbre_joueurs_max,
-	'commentaires' => $commentaires
-	));*/
+    if($pwd == $pwd2){
+        $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+        $bdd = login_bd();
+        $req = $bdd->prepare('INSERT INTO users(name_users, first_name_users, email_users, mdp_users, birth_date_users, registration_date_users) VALUES(:name, :first_name, :email, :pwd, :birth_date, :registration_date)');
+        $req->execute(array(
+        'name' => $name,
+        'first_name' => $firstname,
+        'email' => $email,
+        'pwd' => $pwd,
+        'birth_date' => $date_naiss,
+        'registration_date' => date("Y-m-d")
+	));
+    return true;
+    }else{
+        return false;
+    }
 }
 
 /*
