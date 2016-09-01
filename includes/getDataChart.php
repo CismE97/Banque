@@ -12,11 +12,25 @@ function getDataChart($id_user){
     $first_day = date('Y-m-d', strtotime('first day of this month'));
     $last_day = date('Y-m-d', strtotime('last day of this month')); 
     
-    $data = array();
     try{
 	   $bdd = new PDO('mysql:host=localhost;dbname=myfinance;charset=utf8', 'root', 'root');
     }catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
+    }
+    
+    //Get Budget
+    $req = $bdd->prepare("SELECT `budget_user` FROM users WHERE `id_users` = ?");
+    $req->execute(array($id_user)); 
+    while ($donnees = $req->fetch()){
+       $budget_user = $donnees['budget_user'];
+    }
+    
+    //Get total 
+    $req = $bdd->prepare("SELECT SUM(e.`price_spe`) somme FROM expenses e  WHERE e.`fk_user_spe` = ? and  e.`date_spe` between ? and ?");
+    $req->execute(array($id_user,$first_day,$last_day));  
+    while ($donnees = $req->fetch()){
+       $total = $donnees['somme'];
+    
     }
     
     //Get category : 
@@ -25,6 +39,7 @@ function getDataChart($id_user){
     
     $total_cat = array();
     $names_cat = array();
+    array_push($names_cat,'Argent restant');
     
     while ($donnees = $req->fetch()){
 	   $id_cat = round($donnees['id_cat'],2);
@@ -32,6 +47,13 @@ function getDataChart($id_user){
        array_push($total_cat,$id_cat);
        array_push($names_cat,$name_cat);
     }
+    
+
+    $data = array();
+    $rest = $budget_user-$total;
+    array_push($data,$rest);
+    
+    
     
     //Get total
     foreach($total_cat as $cat){
