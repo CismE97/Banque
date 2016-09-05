@@ -137,8 +137,9 @@ function updateUser($name,$firstname,$email,$old_pwd,$date_naiss,$pwd = null,$pw
     while ($donnees = $req->fetch()){
        $old_mdp_DB = $donnees['mdp_users'];
     }
+    
     //IF same password
-    if($old_mdp_DB == $old_pwd){
+    if(password_verify($old_pwd,$old_mdp_DB)){
         if(isset($pwd)){
             if($pwd == $pwd2){
                 $bdd = login_bd();
@@ -148,7 +149,7 @@ function updateUser($name,$firstname,$email,$old_pwd,$date_naiss,$pwd = null,$pw
                 'firstname' => $firstname,
                 'email' => $email,
                 'date_naiss' => $date_naiss,
-                'pwd' => $pwd,
+                'pwd' => password_hash($pwd, PASSWORD_DEFAULT),
                 'id' => $_SESSION['logged_id']
             ));
                 return 'OK-Modification effectuée avec succès !';  

@@ -1,6 +1,6 @@
 <?php 
 if(!isLogged()){
-   header('Location: ./'); 
+    echo '<script>document.location.href="./";</script>';
 }else{
     if(isset($_POST['addExpense'])){
        addExpenses($_POST['description'], $_POST['category'], $_POST['date'], $_POST['price']);
