@@ -7,7 +7,7 @@ if(!isLogged()){
      $name = $data[0];
      $email = $data[2];
      $mdp = $data[3];
-     $birth_date_users = $data[4];
+     $birth_date_users = date("Y-m-d", strtotime($data[4]));
      $registration_date = date("d/m/Y", strtotime($data[5]));
 }
 ?>

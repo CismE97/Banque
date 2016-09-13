@@ -38,8 +38,12 @@
                 <label for="pwd2">Retapez votre mot de passe :</label>
                 <input type="password" class="form-control" name="pwd2" id="pwd2" readonly="readonly">
                 <label for="date_naiss">Date de naissance : *</label>
-                <input type="date" class="form-control" name="date_naiss" id="date_naiss" value="<?php echo $birth_date_users ?>" required>
+                <input type="date" class="datepicker form-control" name="date_naiss" id="date_naiss" value="<?php echo $birth_date_users ?>" required>
               </div>
+                <input type="date" name="dob" 
+                value="<?php echo date('Y-m-d', strtotime(escape($user->data()->dob))); ?>"/>
+            
+            
                <button type="submit" class="btn btn-primary">Enregistrer</button>
         </form>
     </div>

@@ -32,7 +32,7 @@ $req->execute(array());
                 </div>
               <div class="form-group">
                 <label for="date">Date :</label>
-                <input type="date" class="form-control" id="date" name="date" required>  
+                <input type="date" class="datepicker form-control" id="date" name="date" required>  
               </div>
             <div class="form-group">
                     <label for="price">Somme : (<?php echo getCurrencyAbridged();?>)</label>

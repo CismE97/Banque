@@ -23,7 +23,7 @@
                 <label for="pwd2">Retapez votre mot de passe :</label>
                 <input type="password" class="form-control" name="pwd2" id="pwd2" required>
                 <label for="date_naiss">Date de naissance</label>
-                <input type="date" class="form-control" name="date_naiss" id="date_naiss" required>
+                <input type="date" class="datepicker form-control" name="date_naiss" id="date_naiss" required>
               </div>
               <div class="checkbox">
                 <label><input type="checkbox" required> J'accepte les conditions </label>

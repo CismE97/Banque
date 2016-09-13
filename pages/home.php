@@ -25,7 +25,6 @@ if(isset($_POST['register'])){
     }
 }
 ?>
-
 <div class="home">
 <div class="text-vertical-center home-content">
         <div class="form-group">

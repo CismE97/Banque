@@ -17,27 +17,35 @@ $.ajax({
                     {
                         data: phpData,
                         backgroundColor: [
-                            "#F37934",
+                            "#27ae60",
                             "#c0392b",
                             "#f39c12",
                             "#f1c40f",
                             "#16a085",
                             "#3498db",
-                            "#27ae60"
+                            "#F37934"
                         ],
                         hoverBackgroundColor: [
-                            "#F37934",
+                            "#27ae60",
                             "#c0392b",
                             "#f39c12",
                             "#f1c40f",
                             "#16a085",
                             "#3498db",
-                            "#27ae60"
+                            "#F37934"
                         ]
                     }]
             }});
     }
 });
+
+$( function() {
+    $( ".datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker( "option", "dateFormat","yy-mm-dd" );
+  } );
+
+
+
 
  function confirmDelete(id) {
      var r = confirm("Voulez-vous vraiement supprimer cet enregistrement ?");

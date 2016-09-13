@@ -11,6 +11,7 @@
     <link href="<?php echo BASE_URL?>./bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo BASE_URL?>./style.css" rel="stylesheet">
     <link href="<?php echo BASE_URL?>./animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
   </head>
   <body>
      <?php include("./includes/functions.php");?>
@@ -60,7 +61,8 @@
   </section> 
   <?php include("./includes/footer.php");?> <?php }?>   
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo BASE_URL?>./bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
