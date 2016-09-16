@@ -29,6 +29,8 @@
                     
                 }elseif($_GET["page"] == 'delExpense' && is_numeric($_GET["spage"])){
                     include("pages/delExpense.php");
+                }elseif($_GET["page"] == 'delLineBudget' && is_numeric($_GET["spage"])){
+                    include("pages/delLineBudget.php");
                 }
                 
             }else{

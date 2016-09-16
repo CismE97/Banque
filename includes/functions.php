@@ -308,7 +308,7 @@ function add_budget($type,$input_desc,$input_value){
 
 function get_all_budget($type){
     $bdd = login_bd();
-    $req = $bdd->prepare("SELECT `desc_bud`, `price_bud` FROM budget WHERE `type_bud` =  ? AND `fk_user_bud` = ? ");
+    $req = $bdd->prepare("SELECT `id_bud`, `desc_bud`, `price_bud` FROM budget WHERE `type_bud` =  ? AND `fk_user_bud` = ? ");
     $req->execute(array($type, $_SESSION['logged_id'])); 
     
     $data = "";
@@ -316,7 +316,7 @@ function get_all_budget($type){
         $desc = $donnees['desc_bud'];
         $price = $donnees['price_bud'];
         
-        $data .= "<tr><td>".$desc."</td><td>".getCurrencyAbridged()." ".$price."</td></tr>";
+        $data .= "<tr><td>".$desc."</td><td>".getCurrencyAbridged()." ".$price."</td><td><a href='#' onclick='confirmDeleteBud(".$donnees['id_bud'].")'><span class='glyphicon glyphicon-trash' aria-hidden='true'></a></span></td></tr>";
     }
     return $data;
 }
@@ -344,4 +344,14 @@ function getBudget(){
     }
     return $input;
 }
+
+function delLineBudget($id){
+    $bdd = login_bd();
+    $req = $bdd->prepare('DELETE FROM budget WHERE id_bud=:id');
+    $req->execute(array(
+    'id' => $id
+    ));
+    
+}
+
 ?>

@@ -40,7 +40,7 @@ if(!isLogged()){
                 <thead class="table_plus">
                     <tr>
                         <th>ENTREE D'ARGENT</th>
-                        <th style="text-align: right;"><button type="button" id="cash_input_button" class="btn btn-secondary btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></th>
+                        <th colspan="2" style="text-align: right;"><button type="button" id="cash_input_button" class="btn btn-secondary btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,7 +72,7 @@ if(!isLogged()){
                 <thead class="table_minus">
                     <tr>
                         <th>SORTIES D'ARGENT</th>
-                        <th style="text-align: right;"><button type="button" id="cash_output_button" class="btn btn-secondary btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></th>
+                        <th colspan="2" style="text-align: right;"><button type="button" id="cash_output_button" class="btn btn-secondary btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></th>
                     </tr>
                 </thead>
                 <tbody>

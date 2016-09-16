@@ -47,13 +47,22 @@ $( function() {
 
 
 
- function confirmDelete(id) {
+function confirmDelete(id) {
      var r = confirm("Voulez-vous vraiement supprimer cet enregistrement ?");
      if (r == true) {
          var URL = "./delExpense/"+id;
          document.location.href= URL;
      }
-    }
+}
+
+function confirmDeleteBud(id){
+    var r = confirm("Voulez-vous vraiement supprimer cet enregistrement ?");
+     if (r == true) {
+         var URL = "./delLineBudget/"+id;
+         document.location.href= URL;
+     }
+    
+}
 
 $(document).ready(function(){
    $('.js-scrollTo').on('click',function (){
