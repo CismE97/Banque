@@ -46,6 +46,9 @@
                     case "expenses":
                     include("pages/allExpenses.php");
                     break;
+                    case "budget":
+                    include("pages/budget.php");
+                    break;
                     case "logout":
                     include("pages/logout.php");
                     break;

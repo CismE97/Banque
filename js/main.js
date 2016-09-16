@@ -72,5 +72,15 @@ $(document).ready(function() {
 });
 
 
+/*Ajout ligne budget*/
+$( "#cash_input_button" ).click(function() {
+  $('#cash_input > tbody:last-child').append('<tr><td><input type="text" name="input_desc[]"></td><td><input type="number" name="input_value[]"></td></tr>');
+});
+
+$( "#cash_output_button" ).click(function() {
+    $('#cash_output > tbody:last-child').append('<tr><td><input type="text" name="output_desc[]"></td><td><input type="number" name="output_value[]"></td></tr>');
+});
+
+
 
 

@@ -195,16 +195,6 @@ function getCurrencyAbridged(){
     return $abridged_curr;
 }
 
-function getBudget(){
-    $bdd = login_bd();
-    $req = $bdd->prepare("SELECT `budget_user` FROM users WHERE `id_users` = ?");
-    $req->execute(array($_SESSION['logged_id'])); 
-    while ($donnees = $req->fetch()){
-       $budget_user = $donnees['budget_user'];
-    }
-    return $budget_user;
-}
-
 function getAllCurrencies(){
     $bdd = login_bd();
     $req = $bdd->prepare("SELECT `name_curr`, `id_curr` FROM currencies");
@@ -297,12 +287,61 @@ function getAllExpenses($search = null,$id_cat = null,$month = null, $year = nul
     return $table;   
 }
 
-
 function  delExpense($id){
     $bdd = login_bd();
     $req = $bdd->prepare('DELETE FROM expenses WHERE id_spe=:id');
     $req->execute(array(
     'id' => $id
     ));
+}
+/* ------------- BUDGET -----------------------*/
+function add_budget($type,$input_desc,$input_value){
+    $bdd = login_bd();
+    $req = $bdd->prepare('INSERT INTO budget(`fk_user_bud`, `type_bud`, `desc_bud`, `price_bud`) VALUES(:user, :type, :description, :price)');
+    $req->execute(array(
+	'user' => $_SESSION['logged_id'],
+	'type' => $type,
+	'description' => $input_desc,
+	'price' => $input_value
+	));
+}
+
+function get_all_budget($type){
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT `desc_bud`, `price_bud` FROM budget WHERE `type_bud` =  ? AND `fk_user_bud` = ? ");
+    $req->execute(array($type, $_SESSION['logged_id'])); 
+    
+    $data = "";
+    while ($donnees = $req->fetch()){
+        $desc = $donnees['desc_bud'];
+        $price = $donnees['price_bud'];
+        
+        $data .= "<tr><td>".$desc."</td><td>".getCurrencyAbridged()." ".$price."</td></tr>";
+    }
+    return $data;
+}
+
+function get_money_left(){
+    $input = getBudget();
+    
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT SUM(`price_bud`) total_output FROM budget WHERE `type_bud` =  ? AND `fk_user_bud` = ?");
+    $req->execute(array("output", $_SESSION['logged_id'])); 
+    
+    while ($donnees = $req->fetch()){
+       $output = $donnees['total_output'];
+    }
+    return $input - $output; 
+}
+
+function getBudget(){
+    $bdd = login_bd();
+    $req = $bdd->prepare("SELECT SUM(`price_bud`) total_input FROM budget WHERE `type_bud` =  ? AND `fk_user_bud` = ?");
+    $req->execute(array("input", $_SESSION['logged_id'])); 
+    
+    while ($donnees = $req->fetch()){
+       $input = $donnees['total_input'];
+    }
+    return $input;
 }
 ?>

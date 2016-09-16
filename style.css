@@ -158,6 +158,9 @@ hr {
 .row.vdivide p a {color:white;}
 
 
+/*Budget*/
+.budget button{float:right;}
+
 /*Footer*/
 footer{
     margin-top: 50px;
