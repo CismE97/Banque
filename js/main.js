@@ -39,6 +39,37 @@ $.ajax({
     }
 });
 
+
+$.ajax({
+    url: './includes/getDataChart.php',
+    type: 'post',
+    data: { "callFunc2": $('#hiddenID').text()},
+    success: function(response) { 
+        const CHART = document.getElementById("lineChartBudget");
+        Chart.defaults.global.legend.position = 'bottom';
+        
+            var lineChart = new Chart (CHART, {
+                type: 'doughnut',
+                data: data = {
+                labels: ["Entrées d'argent","Sorties d'argent","Argent restant"],
+                datasets: [
+                    {
+                        data: JSON.parse(response),
+                        backgroundColor: [
+                            "#27ae60",
+                            "#c0392b",
+                            "#f39c12"
+                        ],
+                        hoverBackgroundColor: [
+                            "#27ae60",
+                            "#c0392b",
+                            "#f39c12"
+                        ]
+                    }]
+            }});
+    }
+});
+
 $( function() {
     $( ".datepicker" ).datepicker();
     $( ".datepicker" ).datepicker( "option", "dateFormat","yy-mm-dd" );

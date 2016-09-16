@@ -28,7 +28,11 @@ if(!isLogged()){
     </div>
     <div class="col-md-12">
         <div class="alert alert-warning" role="alert">
-            <p><strong>Informations : </strong> A rédiger ...</p>
+            <p><strong>Informations : </strong> Cet utilitaire vous permettra de concevoir votre budget. Ce n’est pas ici que vous devez inscrire vos dépenses, mais il vous permet d’avoir une idée globale de vos futures dépenses. (en général un budget se fait annuellement). 
+            </p>
+            <p>
+            Le budget que vous retrouvez dans le dashboard est calculé avec la somme des entrées d'argent.     
+            </p>
         </div>
     </div>
 </div>
@@ -79,7 +83,11 @@ if(!isLogged()){
                     <?php echo $output_data ?>
                 </tbody>
             </table> 
-        </div>        
+        </div>
+        <div class="col-md-6">
+            <p hidden id="hiddenID"><?php echo $_SESSION['logged_id'];?></p>
+            <canvas id="lineChartBudget"></canvas>
+        </div>
     </div>
     <button type="submit" class="btn btn-primary">Enregistrer</button>
 </form>

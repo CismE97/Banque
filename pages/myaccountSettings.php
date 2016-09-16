@@ -27,7 +27,7 @@
                 <label class="control-label col-sm-3" for="budget">Budget mensuel :</label>
                 <div class="input-group col-md-9 ">
                     <span class="input-group-addon"><?php echo getCurrencyAbridged();?></span>
-                    <input type="number" class="form-control col-sm-10" name="budget" id="budget" value="<?php echo getBudget();?>" required >
+                    <input type="number" class="form-control col-sm-10" name="budget" id="budget" value="<?php echo getBudget();?>" required readonly="readonly">
                 </div>
             </div>
 
