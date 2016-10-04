@@ -51,9 +51,6 @@ if(isset($_POST['register'])){
     <div id="more">
         <div class="row">
             <div class="col-md-6">
-                <p><img class="img-responsive phone img-home "src="./img/phone.png"/></p>
-            </div>
-            <div class="col-md-6">
                 <h3>Gérez vos finances facilement</h3>
                 <ul>
                     <li>Toutes vos dépenses à un seul endroit.</li>
@@ -62,13 +59,17 @@ if(isset($_POST['register'])){
                     <li>Une visibilité instantanée sur vos dépenses grâce aux analyses graphiques</li>
                 </ul>
             </div>
+            <div class="col-md-6">
+                <p><img class="img-responsive phone img-home "src="./img/phone.png"/></p>
+            </div>
         </div>
     </div>
 </section>
 </div>
+<div>
 <section id="main-content" class="container">
     <div id="more">
-        <div class="row vertical-align">
+        <div class="row">
             <div class="col-md-6">
                 <h3>Un suivi sur tous vos appareils</h3>
                 <ul>
@@ -83,6 +84,7 @@ if(isset($_POST['register'])){
         </div>
     </div>
 </section>
+</div>
 <?php include("./includes/footer.php")?>
 <?php include("./includes/modalLogin.php");?>
 <?php include("./includes/modalRegister.php");?> 
