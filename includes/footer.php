@@ -12,6 +12,7 @@
                 </div>
                 <div class="col-md-4">
                     <p class="title_footer"><strong>Plus</strong></p>
+                    <p><a href="https://www.leetchi.com/c/projets-de-thibaud-10275839" alt="Nous soutenir">Faire un don</a></p>
                     <p>Conditions générales</p>
                     <p>Foire aux questions</p>
                     <p>A propos</p>

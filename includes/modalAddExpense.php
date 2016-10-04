@@ -36,7 +36,7 @@ $req->execute(array());
               </div>
             <div class="form-group">
                     <label for="price">Somme : (<?php echo getCurrencyAbridged();?>)</label>
-                   <input type="number" class="form-control" id="price" name="price" min="1" step="0.01" required>
+                   <input type="number" class="form-control" id="price" name="price" min="0.01" step="0.01" required>
                     <input type="hidden" value="1" name="addExpense" />
             </div>
       </div>

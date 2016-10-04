@@ -5,7 +5,7 @@ if(!isLogged()){
     if(isset($_POST["input_desc"]) && isset($_POST["input_value"])){
         $input_desc = $_POST["input_desc"];
         $input_value = $_POST["input_value"];
-        for($i = 0; $i <= count($input_desc); $i++){
+        for($i = 0; $i < count($input_desc); $i++){
             add_budget("input", $input_desc[$i], $input_value[$i]);  
         }   
     }
@@ -13,7 +13,7 @@ if(!isLogged()){
     if(isset($_POST["output_desc"]) && isset($_POST["output_value"])){
         $output_desc = $_POST["output_desc"];
         $output_value = $_POST["output_value"];
-        for($i = 0; $i <= count($output_desc); $i++){
+        for($i = 0; $i < count($output_desc); $i++){
             add_budget("output", $output_desc[$i], $output_value[$i]);  
         }   
     }
