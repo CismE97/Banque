@@ -31,7 +31,6 @@ function getDataChart($id_user){
     }
     
     
-    
     //Get total 
     $req = $bdd->prepare("SELECT SUM(e.`price_spe`) somme FROM expenses e  WHERE e.`fk_user_spe` = ? and  e.`date_spe` between ? and ?");
     $req->execute(array($id_user,$first_day,$last_day));  
@@ -56,7 +55,7 @@ function getDataChart($id_user){
     
 
     $data = array();
-    $rest = $budget_user-$total;
+    $rest = round($budget_user-$total,2);
     array_push($data,$rest);
     
     
